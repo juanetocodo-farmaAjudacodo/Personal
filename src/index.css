@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", var(--font-sans);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-dark: #0f172a;
+  --color-brand-medium: #1e293b;
+  --color-brand-accent: #0ea5e9;
+  --color-brand-accent-glow: rgba(14, 165, 233, 0.15);
+}
+
+@layer utilities {
+  .bg-gradient-clinical {
+    background: linear-gradient(135deg, #090d16 0%, #0f172a 50%, #1e1b4b 100%);
+  }
+}
+
+/* Custom print styles to ensure high fidelity, exact scaling, and hide UI when printing */
+@media print {
+  body {
+    background: white !important;
+    color: #0f172a !important;
+  }
+  
+  /* Hide non-printable widgets and buttons */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Force print background colors */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-card {
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+    background: white !important;
+    page-break-inside: avoid;
+  }
+}
+
+/* Hide print layout elements during normal navigation */
+.print-only {
+  display: none;
+}
+
+@media print {
+  .print-only {
+    display: block !important;
+  }
+}
+
